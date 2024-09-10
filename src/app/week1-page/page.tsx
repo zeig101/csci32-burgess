@@ -93,6 +93,17 @@ export default function Home() {
             </h2>
             <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">It does more than make things float!</p>
           </a>
+
+          <a
+            href="/week5-page"
+            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100"
+          >
+            <h2 className="mb-3 text-2xl font-semibold">
+              Soon: More!
+              <span className="inline-block transition-transform group-hover:translate-x-1">-&gt;</span>
+            </h2>
+            <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">More elements to follow!</p>
+          </a>
         </div>
       </nav>
 
