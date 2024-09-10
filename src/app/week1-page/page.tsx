@@ -16,7 +16,7 @@ export default function Home() {
             className="my-4 w-full h-auto"
           />
           <p className="text-black text-base">
-            It is the third most abundant element on the Earth's crust, and we should all be thankful for that! Oxygen
+            It is the third most abundant element on the Earth&apos;s crust, and we should all be thankful for that! Oxygen
             is the element from the air that we breathe.
           </p>
           <p className="text-black text-base">
@@ -69,7 +69,7 @@ export default function Home() {
               Next: Nitrogen
               <span className="inline-block transition-transform group-hover:translate-x-1">-&gt;</span>
             </h2>
-            <p className="m-0 max-w-[30ch] text-sm opacity-50">It's what plants crave!</p>
+            <p className="m-0 max-w-[30ch] text-sm opacity-50">It&apos;s what plants crave!</p>
           </a>
 
           <a
@@ -80,7 +80,7 @@ export default function Home() {
               Soon: Hydrogen
               <span className="inline-block transition-transform group-hover:translate-x-1">-&gt;</span>
             </h2>
-            <p className="m-0 max-w-[30ch] text-sm opacity-50">The other parts of water!.</p>
+            <p className="m-0 max-w-[30ch] text-sm opacity-50">The other parts of water!</p>
           </a>
 
           <a
