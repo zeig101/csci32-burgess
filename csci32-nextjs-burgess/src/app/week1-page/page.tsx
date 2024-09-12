@@ -16,8 +16,8 @@ export default function Home() {
             className="my-4 w-full h-auto"
           />
           <p className="text-black text-base">
-            It is the third most abundant element on the Earth&apos;s crust, and we should all be thankful for that! Oxygen
-            is the element from the air that we breathe.
+            It is the third most abundant element on the Earth&apos;s crust, and we should all be thankful for that!
+            Oxygen is the element from the air that we breathe.
           </p>
           <p className="text-black text-base">
             In its typical form, oxygen is a colorless, odorless, and tasteless gas that is absolutely crucial to living
