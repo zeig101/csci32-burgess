@@ -47,3 +47,14 @@ export function getVariantBorderStyles(variant: Variant) {
       return 'border-2 border-purple-600'
   }
 }
+
+export function getVariantButtonTextStyles(variant: Variant) {
+  switch (variant) {
+    case Variant.PRIMARY:
+      return 'text-white'
+    case Variant.SECONDARY:
+      return 'text-white'
+    case Variant.TERTIARY:
+      return 'text-white'
+  }
+}

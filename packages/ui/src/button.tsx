@@ -23,12 +23,12 @@ export const Button = ({
   variant = Variant.PRIMARY,
 }: ButtonProps) => {
   const sizeCssClasses = getSizeStyles(size)
-  const variantButtonTextStyles = getVariantButtonTextStyles(variant)
+  const variantButtonTextCssClasses = getVariantButtonTextStyles(variant)
   const variantBackgroundCssClasses = getVariantBackgroundStyles(variant)
   const variantOutlineCssClasses = getVariantOutlineStyles(variant)
-  const commonCssCLasses = getCommonStyles()
+  const commonCssClasses = getCommonStyles()
 
-  const completedCssClasses = `${sizeCssClasses} ${variantBackgroundCssClasses} ${variantOutlineCssClasses} ${commonCssCLasses} ${variantButtonTextStyles} ${className}`
+  const completedCssClasses = `${sizeCssClasses} ${variantBackgroundCssClasses} ${variantOutlineCssClasses} ${commonCssClasses} ${variantButtonTextCssClasses} ${className}`
   return href ? (
     <a href={href} className={completedCssClasses}>
       {children}
