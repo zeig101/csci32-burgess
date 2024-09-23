@@ -1,3 +1,3 @@
 export function getCommonStyles() {
-  return 'flex items-center justify-center text-white hover:outline outline-offset-4 transition-colors'
+  return 'flex items-center justify-center hover:outline outline-offset-4 transition-colors'
 }

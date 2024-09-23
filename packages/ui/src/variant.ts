@@ -29,11 +29,11 @@ export function getVariantOutlineStyles(variant: Variant) {
 export function getVariantInputTextStyles(variant: Variant) {
   switch (variant) {
     case Variant.PRIMARY:
-      return 'text-slate-950'
+      return 'text-slate-900'
     case Variant.SECONDARY:
-      return 'text-slate-950'
+      return 'text-slate-900'
     case Variant.TERTIARY:
-      return 'text-slate-950'
+      return 'text-slate-900'
   }
 }
 
