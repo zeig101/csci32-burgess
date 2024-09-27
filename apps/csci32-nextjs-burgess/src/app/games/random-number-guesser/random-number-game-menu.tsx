@@ -45,7 +45,7 @@ export default function RandomNumberGameMenu({ startGame }: GuessingGameMenuProp
           <header className="flex flex-col gap-4">
             <h1 className="text-2xl font-bold">Guess! That! Number!</h1>
             <p className="text-red-700">
-              Absolutely nothing is at stake other than whatever you're ignoring to waste time playing this game!
+              Absolutely nothing is at stake other than whatever you&apos;re ignoring to waste time playing this game!
             </p>
             <p>I hope you can deal with the crushing weight of your procrastination!</p>
           </header>
@@ -56,7 +56,7 @@ export default function RandomNumberGameMenu({ startGame }: GuessingGameMenuProp
             }}
           >
             <Button size={Size.MEDIUM} variant={Variant.TERTIARY}>
-              Let's play the game!
+              Let&apos;s play the game!
             </Button>
           </form>
         </div>

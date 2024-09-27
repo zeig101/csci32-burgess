@@ -71,7 +71,7 @@ export default function RandomNumberGame({ randomNumber, endGame, maxGuessCount 
           <div>{feedback}</div>
           <div>Times guessed: {guessCount - 1}</div>
           <Button size={Size.MEDIUM} variant={Variant.PRIMARY}>
-            That's what you're going with?
+            That&apos;s what you&apos;re going with?
           </Button>
         </form>
       )}
