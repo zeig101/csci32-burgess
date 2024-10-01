@@ -23,7 +23,9 @@ export default function RandomNumberGameMenu({ startGame }: GuessingGameMenuProp
       {showSettings ? (
         <div className="flex flex-col gap-4">
           <header>
-            <h1 className="text-xl font-bold">Enter your minimum and maximum numbers for the game:</h1>
+            <h1 className="text-xl font-bold">
+              Enter your minimum and maximum numbers for the game, as well as the maximum guess count:
+            </h1>
           </header>
           <form className="flex flex-col gap-5" onSubmit={onSubmitSettings}>
             <Input defaultValue={0} type="number" placeholder={'Minimum guess value'} name="min" id="min" />
