@@ -26,9 +26,6 @@ model Ingredient {
   ingredient_measurements IngredientMeasurement[]
 }
 
-//ingredient called salt
-//salt goes into two ingredient measurements
-
 model IngredientMeasurement {
   @@id([ingredient_id, recipe_id])
   ingredient_id   String
@@ -38,17 +35,6 @@ model IngredientMeasurement {
   quantity        Int @default(0)
   unit            String
 }
-
-//EXAMPLE MEASUREMENT
-//ingredient_id "salt"
-//recipe_id "pizza dough"
-//quantity 1
-//unit 'tsp'
-
-//ingredient_id "salt"
-//recipe_id "sourdough"
-//quantity 0.5
-//unit 'tsp'
 
 model Recipe {
   recipe_id           String @id @default(cuid())
