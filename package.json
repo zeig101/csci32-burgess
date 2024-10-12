@@ -16,7 +16,8 @@
     "generate": "turbo run generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.20.0"
+    "@prisma/client": "^5.20.0",
+    "cross-env": "^7.0.3"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
