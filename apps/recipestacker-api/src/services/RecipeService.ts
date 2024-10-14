@@ -18,11 +18,21 @@ interface FindOneRecipeProps {}
 
 interface FindManyRecipeProps {}
 
-interface CreateIngredientMeasurementProps {}
+interface CreateIngredientMeasurementProps {
+  ingredient_id?: string
+  ingredient_name?: string
+  ingredient_description?: string
+  unit: string
+  quantity: number
+}
 
 interface UpdateOneRecipeProps {}
 
-interface CreateOneRecipeProps {}
+interface CreateOneRecipeProps {
+  name: string
+  description: string
+  ingredient_measurements: CreateIngredientMeasurementProps[]
+}
 
 interface GetRecipeOrderByProps {}
 
@@ -35,7 +45,7 @@ export class RecipeService {
     this.prisma = prisma
   }
 
-  getRecipeOrderBy({}: GetRecipeOrderByProps): Prisma.RecipeOrderByWithRelationInput {}
+  getRecipeOrderBy({}: GetRecipeOrderByProps) /*: Prisma.RecipeOrderByWithRelationInput */ {}
 
   async findOneRecipe({}: FindOneRecipeProps) {}
 
@@ -43,5 +53,40 @@ export class RecipeService {
 
   async findManyRecipes(props: FindManyRecipeProps) {}
 
-  async createOneRecipe(props: CreateOneRecipeProps) {}
+  async createOneRecipe(props: CreateOneRecipeProps) {
+    const { name, description, ingredient_measurements } = props
+    const spoof_user_id = 'cm28c93dm0000pkypqc7mmpi5'
+    const recipe = await this.prisma.recipe.create({
+      data: {
+        user: {
+          connect: {
+            user_id: spoof_user_id,
+          },
+        },
+        name,
+        description,
+        ingredient_measurements: {
+          create: ingredient_measurements.map(
+            ({ ingredient_id, ingredient_name, ingredient_description, unit, quantity }) => ({
+              ingredient: ingredient_id
+                ? {
+                    connect: {
+                      ingredient_id,
+                    },
+                  }
+                : {
+                    create: {
+                      name: ingredient_name,
+                      description: ingredient_description,
+                    },
+                  },
+              quantity,
+              unit,
+            }),
+          ),
+        },
+      },
+    })
+    return recipe
+  }
 }
