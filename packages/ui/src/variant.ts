@@ -2,10 +2,16 @@ export enum Variant {
   PRIMARY,
   SECONDARY,
   TERTIARY,
+  ERROR,
+  ALERT,
 }
 
 export function getVariantBackgroundStyles(variant: Variant) {
   switch (variant) {
+    case Variant.ERROR:
+      return 'bg-red-600 hover:bg-red-700 active:bg-red-800'
+    case Variant.ALERT:
+      return 'bg-amber-600 hover:bg-amber-700 active:bg-amber-800'
     case Variant.PRIMARY:
       return 'bg-slate-600 hover:bg-slate-700 active:bg-slate-800'
     case Variant.SECONDARY:
@@ -17,6 +23,10 @@ export function getVariantBackgroundStyles(variant: Variant) {
 
 export function getVariantOutlineStyles(variant: Variant) {
   switch (variant) {
+    case Variant.ERROR:
+      return 'outline-red-600'
+    case Variant.ALERT:
+      return 'outline-amber-600'
     case Variant.PRIMARY:
       return 'outline-black'
     case Variant.SECONDARY:
@@ -28,6 +38,10 @@ export function getVariantOutlineStyles(variant: Variant) {
 
 export function getVariantInputTextStyles(variant: Variant) {
   switch (variant) {
+    case Variant.ERROR:
+      return 'text-black'
+    case Variant.ALERT:
+      return 'text-black'
     case Variant.PRIMARY:
       return 'text-slate-900'
     case Variant.SECONDARY:
@@ -39,6 +53,10 @@ export function getVariantInputTextStyles(variant: Variant) {
 
 export function getVariantBorderStyles(variant: Variant) {
   switch (variant) {
+    case Variant.ERROR:
+      return 'border-2 border-red-600'
+    case Variant.ALERT:
+      return 'border-2 border-amber-600'
     case Variant.PRIMARY:
       return 'border-2 border-slate-600'
     case Variant.SECONDARY:
@@ -50,6 +68,10 @@ export function getVariantBorderStyles(variant: Variant) {
 
 export function getVariantButtonTextStyles(variant: Variant) {
   switch (variant) {
+    case Variant.ERROR:
+      return 'text-white'
+    case Variant.ALERT:
+      return 'text-white'
     case Variant.PRIMARY:
       return 'text-white'
     case Variant.SECONDARY:

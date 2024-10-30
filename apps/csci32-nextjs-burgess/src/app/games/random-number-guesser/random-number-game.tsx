@@ -1,7 +1,7 @@
 'use client'
 import { Button } from '@repo/ui/button'
 import { GuessingGameEngineProps } from './page'
-import Input from '@repo/ui/input'
+import { Input } from '@repo/ui/input'
 import { useState } from 'react'
 import { Size } from '@repo/ui/size'
 import { Variant } from '@repo/ui/variant'
@@ -69,7 +69,7 @@ export default function RandomNumberGame({ randomNumber, endGame, maxGuessCount 
             type="guess"
             placeholder="Enter your guess"
             value={guess}
-            setValue={(newValue) => setGuess(Number(newValue))}
+            onChange={(newValue) => setGuess(Number(newValue))}
           />
           <div>{feedback}</div>
           <div>Times guessed: {guessCount - 1}</div>

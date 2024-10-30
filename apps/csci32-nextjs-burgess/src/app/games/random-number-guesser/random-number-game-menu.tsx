@@ -4,7 +4,7 @@ import { GuessingGameMenuProps } from './page'
 import { FormEventHandler, useState } from 'react'
 import { Size } from '@repo/ui/size'
 import { Variant } from '@repo/ui/variant'
-import Input from '@repo/ui/input'
+import { Input } from '@repo/ui/input'
 
 export default function RandomNumberGameMenu({ startGame }: GuessingGameMenuProps) {
   const [showSettings, setShowSettings] = useState(false)
