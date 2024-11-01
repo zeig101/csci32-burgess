@@ -2,9 +2,6 @@
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
     "target": "es2015",
-    "strict": false,
-    "strictNullChecks": false,
-    "strictPropertyInitialization": false,
     "plugins": [
       {
         "name": "next"
