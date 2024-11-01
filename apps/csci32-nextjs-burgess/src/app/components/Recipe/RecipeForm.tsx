@@ -116,18 +116,20 @@ export function RecipeForm() {
                 value={ingredient.name}
                 onChange={(newIngredientName) => {
                   const newIngredientMeasurements = [
-                  // take the ingredients before the current index
-                  ...ingredientMeasurements.slice(0, index),
-                  // update the ingredient at the current index
-                  {
-                    ...ingredientMeasurements[index],
-                    ingredient: {
-                      ...ingredientMeasurements[index].ingredient,
-                      name: newIngredientName,
+                    // take the ingredients before the current index
+                    ...ingredientMeasurements.slice(0, index),
+                    // update the ingredient at the current index
+                    {
+                      ...ingredientMeasurements[index],
+                      ingredient: {
+                        ...ingredientMeasurements[index].ingredient,
+                        name: newIngredientName,
+                      },
                     },
-                  },
-                  // take the ingredients after the current index
-                  ...ingredientMeasurements.slice(index + 1),
+                    // take the ingredients after the current index
+                    ...ingredientMeasurements.slice(index + 1),
+                  ]
+                  setIngredientMeasurements(newIngredientMeasurements)
                 }}
                 placeholder="Enter an ingredient name"
               />
