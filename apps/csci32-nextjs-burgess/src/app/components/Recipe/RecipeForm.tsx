@@ -120,11 +120,12 @@ export function RecipeForm() {
                     ...ingredientMeasurements.slice(0, index),
                     // update the ingredient at the current index
                     {
-                      ...ingredientMeasurements[index],
                       ingredient: {
-                        ...ingredientMeasurements[index].ingredient,
+                        description: ingredientMeasurements[index]?.ingredient.description || '',
                         name: newIngredientName,
                       },
+                      unit: ingredientMeasurements[index]?.unit || '',
+                      quantity: ingredientMeasurements[index]?.quantity || '',
                     },
                     // take the ingredients after the current index
                     ...ingredientMeasurements.slice(index + 1),
@@ -142,7 +143,11 @@ export function RecipeForm() {
                   const newIngredientMeasurements = [
                     ...ingredientMeasurements.slice(0, index),
                     {
-                      ...ingredientMeasurements[index],
+                      ingredient: ingredientMeasurements[index]?.ingredient || {
+                        name: '',
+                        description: '',
+                      },
+                      unit: ingredientMeasurements[index]?.unit || '',
                       quantity: newQuantity,
                     },
                     ...ingredientMeasurements.slice(index + 1),
@@ -160,8 +165,12 @@ export function RecipeForm() {
                   const newIngredientMeasurements = [
                     ...ingredientMeasurements.slice(0, index),
                     {
-                      ...ingredientMeasurements[index],
+                      ingredient: ingredientMeasurements[index]?.ingredient || {
+                        name: '',
+                        description: '',
+                      },
                       unit: newUnit,
+                      quantity: ingredientMeasurements[index]?.quantity || '',
                     },
                     ...ingredientMeasurements.slice(index + 1),
                   ]
