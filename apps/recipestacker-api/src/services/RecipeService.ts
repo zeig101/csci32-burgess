@@ -160,7 +160,7 @@ export class RecipeService {
   }
 
   async createOneRecipe(props: CreateOneRecipeProps) {
-    this.logger.info('TEST TEST')
+    this.logger.info({ props }, 'createOneRecipe')
     const { name, description, ingredient_measurements } = props
     const { user_id } = await this.prisma.user.findFirstOrThrow()
     const recipe = await this.prisma.recipe.create({

@@ -34,6 +34,7 @@ model IngredientMeasurement {
   recipe          Recipe @relation(fields: [recipe_id], references: [recipe_id])
   quantity        Int @default(0)
   unit            String
+  @@index([recipe_id])
 }
 
 model Recipe {
@@ -43,4 +44,6 @@ model Recipe {
   ingredient_measurements IngredientMeasurement[]
   user                User @relation(fields: [user_id], references: [user_id])
   user_id             String
+
+  @@index([user_id])
 }
