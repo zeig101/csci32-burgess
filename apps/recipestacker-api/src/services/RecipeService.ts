@@ -20,6 +20,7 @@ interface FindOneRecipeProps {
 
 interface FindManyRecipeProps {
   name?: string
+  ingredients?: string
   sortColumn?: string
   sortOrder?: SortOrder
   take?: number
@@ -137,16 +138,34 @@ export class RecipeService {
 
   async findManyRecipes(props: FindManyRecipeProps) {
     this.logger.info({ props }, 'findManyRecipes')
-    const { name, sortColumn = 'name', sortOrder = SortOrder.ASC, take = DEFAULT_TAKE, skip = DEFAULT_SKIP } = props
+    const {
+      name,
+      ingredients,
+      sortColumn = 'name',
+      sortOrder = SortOrder.ASC,
+      take = DEFAULT_TAKE,
+      skip = DEFAULT_SKIP,
+    } = props
+    const ingredientsArray = ingredients ? ingredients.split(',') : []
     const orderBy = this.getRecipeOrderBy({ sortColumn, sortOrder })
-    //get recipes
-    return this.prisma.recipe.findMany({
+    const recipes = await this.prisma.recipe.findMany({
       where: {
-        name,
+        name: {
+          contains: name,
+        },
+        AND: ingredientsArray.map((ingredient) => ({
+          ingredient_measurements: {
+            some: {
+              ingredient: {
+                name: {
+                  contains: ingredient,
+                },
+              },
+            },
+          },
+        })),
       },
-      orderBy: {
-        name: SortOrder.ASC,
-      },
+      orderBy,
       take,
       skip,
       include: {
@@ -157,6 +176,7 @@ export class RecipeService {
         },
       },
     })
+    return recipes
   }
 
   async createOneRecipe(props: CreateOneRecipeProps) {
