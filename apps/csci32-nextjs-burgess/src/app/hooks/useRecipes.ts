@@ -32,7 +32,9 @@ async function fetcher({ path, urlParams }: { path: string; urlParams?: string }
       headers: { 'Access-Control-Allow-Origin': '*' },
     },
   )
-  return res.json()
+  const data = await res.json()
+  console.log('API response:', data)
+  return data
 }
 
 type SearchProps = {

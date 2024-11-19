@@ -30,10 +30,8 @@ export default function RecipeHome() {
           <RecipeForm />
         ) : (
           <>
-            <>
-              <RecipeSearch />
-              <RecipeResults />
-            </>
+            <RecipeSearch />
+            <RecipeResults />
           </>
         )}
       </Flex>

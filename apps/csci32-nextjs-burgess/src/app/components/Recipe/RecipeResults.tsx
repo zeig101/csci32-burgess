@@ -6,7 +6,7 @@ import RecipeCard from './RecipeCard'
 export default function RecipeResults() {
   const { recipes } = useContext(RecipeContext)
   return (
-    <Flex className="gap-12 flex-wrap ">
+    <Flex className="gap-4 flex-wrap flex">
       {recipes?.map(({ recipe_id, name, description, ingredient_measurements }) => (
         <RecipeCard
           key={recipe_id}

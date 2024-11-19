@@ -8,8 +8,7 @@ import { RecipeContext } from '@/context/RecipeContext'
 import { useContext } from 'react'
 
 export default function RecipeSearch() {
-  const { setIngredientQuery, ingredientQuery, setIngredients, setRecipeNameQuery, ingredients } =
-    useContext(RecipeContext)
+  const { setIngredients, setRecipeNameQuery, ingredients } = useContext(RecipeContext)
   return (
     <>
       <Header className="justify-between">Search Recipes</Header>
@@ -19,10 +18,8 @@ export default function RecipeSearch() {
           <Input
             name="ingredient-search"
             id="ingredient-search"
-            onChange={(newIngredientsQuery) => setIngredientQuery(newIngredientsQuery)}
             onEnter={(newIngredient) => {
               setIngredients([...ingredients, newIngredient])
-              setIngredientQuery('')
             }}
           />
         </Field>

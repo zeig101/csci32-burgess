@@ -26,10 +26,8 @@ export type RecipeContextType = {
   recipeNameQuery: string
   setRecipeNameQuery: (query: string) => void
   ingredients: string[]
-  ingredientQuery: string
   removeIngredient: (index: string) => void
   setIngredients: (ingredients: string[]) => void
-  setIngredientQuery: (query: string) => void
   showRecipeForm: boolean
   setShowRecipeForm: (showRecipeForm: boolean) => void
 }
@@ -40,10 +38,8 @@ const RecipeContext = createContext<RecipeContextType>({
   recipeNameQuery: '',
   setRecipeNameQuery: () => {},
   ingredients: [],
-  ingredientQuery: '',
   removeIngredient: () => {},
   setIngredients: () => {},
-  setIngredientQuery: () => {},
   showRecipeForm: false,
   setShowRecipeForm: () => {},
 })
@@ -70,10 +66,8 @@ const RecipeProvider = ({ children }: { children: ReactNode }) => {
         recipeNameQuery,
         setRecipeNameQuery,
         ingredients,
-        ingredientQuery,
         removeIngredient,
         setIngredients,
-        setIngredientQuery,
         showRecipeForm,
         setShowRecipeForm,
       }}
