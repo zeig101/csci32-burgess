@@ -2,24 +2,25 @@ import Fastify, { FastifyPluginAsync } from 'fastify'
 import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
 import { Type } from '@sinclair/typebox'
 
-export const UpsertIngredientMeasurementTypeboxType = Type.Object({
-  unit: Type.String(),
-  quantity: Type.Number(),
+export const UpsertIngredientMeasurementTypeBoxType = Type.Object({
   ingredient_id: Type.Optional(Type.String()),
   ingredient_name: Type.Optional(Type.String()),
   ingredient_description: Type.Optional(Type.String()),
+  unit: Type.String(),
+  quantity: Type.Number(),
 })
 
 export const UpdateRecipeTypeboxType = Type.Object({
   name: Type.Optional(Type.String()),
   description: Type.Optional(Type.String()),
-  ingredient_measurements: Type.Optional(Type.Array(UpsertIngredientMeasurementTypeboxType)),
+  ingredient_measurements: Type.Optional(Type.Array(UpsertIngredientMeasurementTypeBoxType)),
+  delete: Type.Optional(Type.Boolean()),
 })
 
 export const CreateRecipeTypeboxType = Type.Object({
   name: Type.String(),
   description: Type.String(),
-  ingredient_measurements: Type.Array(UpsertIngredientMeasurementTypeboxType),
+  ingredient_measurements: Type.Array(UpsertIngredientMeasurementTypeBoxType),
 })
 
 export const IngredientMeasurementTypboxType = Type.Object({
@@ -89,6 +90,7 @@ const recipe: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
         name: request.body.name,
         description: request.body.description,
         ingredient_measurements: request.body.ingredient_measurements,
+        is_deleted: request.body.delete,
       })
     },
   )

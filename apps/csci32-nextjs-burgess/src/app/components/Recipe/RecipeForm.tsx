@@ -1,5 +1,5 @@
 import { RecipeContext } from '@/context/RecipeContext'
-import { CreateRecipeProps, createRecipe } from '@/hooks/useRecipes'
+import { CreateRecipeProps, createRecipe, updateRecipe } from '@/hooks/useRecipes'
 import { Button } from '@repo/ui/button'
 import { Field } from '@repo/ui/field'
 import { FieldGroup } from '@repo/ui/fieldGroup'
@@ -11,18 +11,20 @@ import { Variant } from '@repo/ui/variant'
 import { useContext, useState } from 'react'
 
 export function RecipeForm() {
-  const { setShowRecipeForm, mutate } = useContext(RecipeContext)
-  const [recipeFormData, setRecipeFormData] = useState({ name: '', description: '' })
-  const [ingredientMeasurements, setIngredientMeasurements] = useState([
-    {
-      ingredient: {
-        name: '',
-        description: '',
+  const { recipe, recipeId, setShowRecipeForm, mutate } = useContext(RecipeContext)
+  const [recipeFormData, setRecipeFormData] = useState(recipe || { name: '', description: '' })
+  const [ingredientMeasurements, setIngredientMeasurements] = useState(
+    recipe?.ingredient_measurements || [
+      {
+        ingredient: {
+          name: '',
+          description: '',
+        },
+        unit: '',
+        quantity: '',
       },
-      unit: '',
-      quantity: '',
-    },
-  ])
+    ],
+  )
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -40,6 +42,9 @@ export function RecipeForm() {
           continue
         }
         ingredient_measurements.push({
+          ingredient_id: recipe?.ingredient_measurements.find(
+            (ingredient) => ingredient.ingredient.name === ingredient_name,
+          )?.ingredient.ingredient_id,
           ingredient_name,
           unit,
           quantity,
@@ -57,7 +62,13 @@ export function RecipeForm() {
       description: recipeDescription,
       ingredient_measurements,
     }
-    await createRecipe(recipeData)
+    if (recipeId) {
+      await updateRecipe({ recipe_id: recipeId, params: recipeData })
+      alert(`Your recipe ${recipeName} has been updated!`)
+    } else {
+      await createRecipe(recipeData)
+      alert(`Your recipe ${recipeName} has been created!`)
+    }
     setRecipeFormData({ name: '', description: '' })
     mutate()
     setShowRecipeForm(false)

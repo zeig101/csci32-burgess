@@ -30,7 +30,7 @@ interface FindManyRecipeProps {
 interface CreateIngredientMeasurementProps {
   ingredient_id?: string
   ingredient_name?: string
-  ingredient_description?: string
+  ingredient_description: string
   unit: string
   quantity: number
 }
@@ -40,6 +40,7 @@ interface UpdateOneRecipeProps {
   name: string
   description: string
   ingredient_measurements: CreateIngredientMeasurementProps[]
+  is_deleted: boolean
 }
 
 interface CreateOneRecipeProps {
@@ -74,6 +75,7 @@ export class RecipeService {
     return this.prisma.recipe.findFirst({
       where: {
         recipe_id,
+        is_deleted: false,
       },
       include: {
         ingredient_measurements: {
@@ -100,6 +102,7 @@ export class RecipeService {
           connect: { user_id },
         },
         ingredient_measurements: {
+          deleteMany: {},
           upsert: ingredient_measurements?.map(
             ({ ingredient_id, quantity, unit, ingredient_name, ingredient_description }) => ({
               where: {
@@ -150,6 +153,7 @@ export class RecipeService {
     const orderBy = this.getRecipeOrderBy({ sortColumn, sortOrder })
     const recipes = await this.prisma.recipe.findMany({
       where: {
+        is_deleted: false,
         name: {
           contains: name,
         },
